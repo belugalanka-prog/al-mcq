@@ -11,6 +11,7 @@
 </head>
 <body>
 <div id="loading" class="loading"><div class="loader"></div><span>Loading A/L MCQ…</span></div>
+<div id="setup-screen" class="setup-screen hidden"><div class="setup-card"><div class="logo setup-logo">A</div><h1>Connect your A/L MCQ website</h1><p>Enter your Supabase Project URL and Publishable/Anon key. These values are stored only in this browser.</p><label>Supabase Project URL<input id="setup-url" placeholder="https://your-project.supabase.co"></label><label>Publishable / Anon key<input id="setup-key" placeholder="eyJhbGciOi..."></label><button id="setup-save" class="btn purple">Connect & Open Website →</button><div id="setup-error" class="setup-error"></div></div></div>
 
 <div class="app-shell">
 <aside class="sidebar">
@@ -48,6 +49,17 @@
 <div id="modal" class="modal"><div class="modal-card"><button class="modal-close" id="modal-close">×</button><div id="modal-content"></div></div></div>
 <div id="toast" class="toast"></div>
 
-<script src="app.js"></script>
+<script>
+window.addEventListener('error', function(e){
+  const l=document.getElementById('loading'); if(l) l.style.display='none';
+  const s=document.getElementById('setup-screen'); if(s && e.error){
+    const err=document.getElementById('setup-error'); if(err) err.textContent='Website error: '+(e.error.message||e.message);
+  }
+});
+window.addEventListener('unhandledrejection', function(e){
+  const l=document.getElementById('loading'); if(l) l.style.display='none';
+  const err=document.getElementById('setup-error'); if(err) err.textContent='Website error: '+(e.reason?.message||e.reason||'Unknown error');
+});
+</script><script src="app.js"></script>
 </body>
 </html>
