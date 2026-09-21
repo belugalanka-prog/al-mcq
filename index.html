@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A/L MCQ — Premium Learning Workspace</title>
+<meta name="description" content="Premium A/L Physics and Chemistry MCQ practice platform">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+</head>
+<body>
+<div id="loading" class="loading"><div class="loader"></div><span>Loading A/L MCQ…</span></div>
+
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="logo">A</div>
+  <nav>
+    <button class="side-btn active" data-page="dashboard" title="Dashboard">⌂</button>
+    <button class="side-btn" data-page="papers" title="Papers">▱</button>
+    <button class="side-btn" data-page="analytics" title="Analytics">◒</button>
+    <button class="side-btn" data-page="leaderboard" title="Leaderboard">♕</button>
+    <button class="side-btn" data-page="profile" title="Profile">◎</button>
+    <button class="side-btn admin-only hidden" data-page="admin" title="Admin">⚙</button>
+  </nav>
+  <div class="side-bottom"><button class="side-help">?</button><div id="mini-avatar" class="avatar">A</div></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <div class="brand-mini">A/L <span>MCQ</span></div>
+  <div class="top-links">
+    <button data-page="dashboard">Dashboard</button>
+    <button data-page="papers">Papers</button>
+    <button data-page="analytics">Progress</button>
+    <button data-page="leaderboard">Leaderboard</button>
+  </div>
+  <input id="global-search" class="search" placeholder="⌕  Search papers…">
+  <button id="auth-btn" class="top-btn">Login</button>
+  <button id="signup-btn" class="top-btn primary">Sign up</button>
+  <button id="logout-btn" class="top-btn hidden">Logout</button>
+</header>
+
+<div id="app"></div>
+</main>
+</div>
+
+<div id="modal" class="modal"><div class="modal-card"><button class="modal-close" id="modal-close">×</button><div id="modal-content"></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
